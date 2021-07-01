@@ -1,0 +1,110 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="xxxxxxxx">
+	<meta name="keywords" content="xxxxxxx">
+	<meta name="author" content="xxxxxx">
+		<script src="css/fullscreen.js"></script>
+	<title>POLYESTER</title>
+	<style type="text/css">
+	
+	body{
+		background:#fff;
+		width:37000px; 
+		margin: 0;
+		padding: 0;
+		overflow-x: visible;
+		overflow-y: hidden;
+		scroll-behavior: smooth;
+		/* background-color: rgba(255, 0, 0, 0.2); */
+	}
+	body { -webkit-touch-callout: none !important; }
+	a { -webkit-user-select: none !important; }
+	body::-webkit-scrollbar {
+    	width: 6px;
+    	height: 6px;
+		background-color: transparent;
+	}
+	body::-webkit-scrollbar-thumb {
+		background-color: #000;
+	}
+	#divFullscreen{
+		top: 0px;
+		left: 0px;
+		position: fixed;
+		z-index: 1000;
+		display: show;
+		background-color: rgba(255, 255, 255, 0.5);
+		cursor: pointer;
+	}
+
+
+
+	#layerBack{
+		top: 0px;
+		left: 0%;
+		height: 100%;
+		position: fixed;
+		z-index: 1;
+	}
+	#layerFront{
+		top: 0px;
+		left: 0%;
+		height: 100%;
+		position: fixed;
+		z-index: 10;
+	}
+
+	</style>
+</head> 
+
+<body>
+
+<div id="layerFront">
+	<nobr>
+		<img src="images/vorne.png"  width="auto" height="100%"/>
+	</nobr>
+</div>  
+
+
+</div> 
+
+<div id="layerBack">
+	<nobr>
+		<img src="images/hinten.jpg"  width="auto" height="100%"/>
+	</nobr>
+</div>
+
+<!--  only with this fakelayer works the scrolling in FIREFOX  -->
+<div id="layer0">
+	<nobr>
+	<img src="images/trans.png" />
+	<nobr>
+</div>
+
+<script>
+// JAVASCRIPT was nach // steht ist auskommentiert /////////////////////////////////////////////////////////
+// Create cross browser requestAnimationFrame method:
+window.requestAnimationFrame = window.requestAnimationFrame
+                            || window.mozRequestAnimationFrame
+                            || window.webkitRequestAnimationFrame
+                            || window.msRequestAnimationFrame
+                            || function(f){setTimeout(f, 25)}
+
+var layerBack = document.getElementById('layerBack')
+var layerFront = document.getElementById('layerFront')
+function parallax(){
+	var scrollLeft = Math.round(window.pageXOffset) // get number of pixels document has scrolled horizontally
+	layerBack.style.left = -Math.round(scrollLeft * 0.5) + 'px'
+	layerFront.style.left = -Math.round(scrollLeft * 1.0) + 'px'
+	var scrollLeft = Math.round(window.pageXOffset)
+}
+window.addEventListener('scroll', function(){ // on page scroll
+	requestAnimationFrame(parallax) // call parallaxX() on next available screen repaint
+}, false)
+
+</script>
+
+
+</body>
+</html>
